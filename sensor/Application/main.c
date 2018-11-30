@@ -69,7 +69,7 @@
 #include "timac_board.h"
 #include <inc/hw_ccfg.h>
 #include <inc/hw_ccfg_simple_struct.h>
-//caonima
+
 /* Header files required for the temporary idle task function */
 #include <ti/drivers/Power.h>
 #include <ti/drivers/power/PowerCC26XX.h>

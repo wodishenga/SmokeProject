@@ -63,11 +63,11 @@ extern "C"
 /*! Security Enable - set to true to turn on security */
 #define CONFIG_SECURE                true
 /*! PAN ID */
-#define CONFIG_PAN_ID                0xFFFF
+#define CONFIG_PAN_ID                0x1234
 /*! Coordinator short address */
 #define CONFIG_COORD_SHORT_ADDR      0xAABB
 /*! FH disabled as default */
-#define CONFIG_FH_ENABLE             false
+#define CONFIG_FH_ENABLE             true
 /*! maximum beacons possibly received */
 #define CONFIG_MAX_BEACONS_RECD      200
 /*! maximum devices in association table */
@@ -85,7 +85,7 @@ extern "C"
 #define CONFIG_MAC_SUPERFRAME_ORDER  15
 
 /*! Setting for Phy ID */
-#define CONFIG_PHY_ID                (APIMAC_STD_US_915_PHY_1)
+#define CONFIG_PHY_ID                (APIMAC_GENERIC_CHINA_433_PHY_128)
 
 #if ((CONFIG_PHY_ID >= APIMAC_MRFSK_STD_PHY_ID_BEGIN) && (CONFIG_PHY_ID <= APIMAC_MRFSK_STD_PHY_ID_END))
 /*! Setting for channel page */
@@ -193,7 +193,7 @@ extern "C"
  APIMAC_STD_ETSI_863_PHY_3 (50kbps/2-FSK/863MHz band) has channels 0 - 33.
  APIMAC_GENERIC_CHINA_433_PHY_128 (50kbps/2-FSK/433MHz band) has channels 0 - 6.
 */
-#define CONFIG_CHANNEL_MASK           { 0x0F, 0x00, 0x00, 0x00, 0x00, 0x00, \
+#define CONFIG_CHANNEL_MASK           { 0x7F, 0x00, 0x00, 0x00, 0x00, 0x00, \
                                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, \
                                         0x00, 0x00, 0x00, 0x00, 0x00 }
 /*!
@@ -203,9 +203,9 @@ extern "C"
  It is represented as a bit string with LSB representing Ch0.
  e.g., 0x01 0x10 represents Ch0 and Ch12 are included.
  */
-#define CONFIG_FH_CHANNEL_MASK        { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, \
-                                        0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, \
-                                        0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
+#define CONFIG_FH_CHANNEL_MASK        { 0x7F, 0x00, 0x00, 0x00, 0x00, 0x00, \
+                                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, \
+                                        0x00, 0x00, 0x00, 0x00, 0x00 }
 
 /*!
  List of channels to target the Async frames
@@ -217,9 +217,9 @@ extern "C"
  it should be removed from Async Mask and added to exclude channels
  (CONFIG_CHANNEL_MASK).
  */
-#define FH_ASYNC_CHANNEL_MASK         { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, \
-                                        0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, \
-                                        0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
+#define FH_ASYNC_CHANNEL_MASK          { 0x7F, 0x00, 0x00, 0x00, 0x00, 0x00, \
+                                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, \
+                                        0x00, 0x00, 0x00, 0x00, 0x00 }
 
 /* FH related config variables */
 /*!
@@ -228,14 +228,14 @@ extern "C"
   must be less than 50. Stack will allocate memory proportional
  to the number of end devices requested.
  */
-#define FH_NUM_NON_SLEEPY_HOPPING_NEIGHBORS  5
+#define FH_NUM_NON_SLEEPY_HOPPING_NEIGHBORS  50
 /*!
  The number of non sleepy fixed channel end devices to be supported.
  It is to be noted that the total number of non sleepy devices supported
   must be less than 50. Stack will allocate memory proportional
  to the number of end devices requested.
  */
-#define FH_NUM_NON_SLEEPY_FIXED_CHANNEL_NEIGHBORS  5
+#define FH_NUM_NON_SLEEPY_FIXED_CHANNEL_NEIGHBORS  50
 
 /*!
  Dwell time: The duration for which the collector will

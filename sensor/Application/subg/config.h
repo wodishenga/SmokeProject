@@ -63,9 +63,9 @@ extern "C"
 /*! Security Enable - set to true to turn on security */
 #define CONFIG_SECURE                true
 /*! PAN ID */
-#define CONFIG_PAN_ID                0xFFFF
+#define CONFIG_PAN_ID                0x1234
 /*! FH disabled as default */
-#define CONFIG_FH_ENABLE             false
+#define CONFIG_FH_ENABLE             true
 /*! link quality */
 #define CONFIG_LINKQUALITY           1
 /*! percent filter */
@@ -94,7 +94,7 @@ extern "C"
 #define CONFIG_ORPHAN_BACKOFF_INTERVAL 300000
 
 /*! Setting for Phy ID */
-#define CONFIG_PHY_ID                (APIMAC_STD_US_915_PHY_1)
+#define CONFIG_PHY_ID                (APIMAC_GENERIC_CHINA_433_PHY_128)
 
 /*! MAC Parameter */
 /*! Min BE - Minimum Backoff Exponent */
@@ -160,7 +160,7 @@ extern "C"
  APIMAC_STD_ETSI_863_PHY_3 (50kbps/2-FSK/863MHz band) has channels 0 - 33.
  APIMAC_GENERIC_CHINA_433_PHY_128 (50kbps/2-FSK/433MHz band) has channels 0 - 6.
 */
-#define CONFIG_CHANNEL_MASK           { 0x0F, 0x00, 0x00, 0x00, 0x00, 0x00, \
+#define CONFIG_CHANNEL_MASK           { 0x7F, 0x00, 0x00, 0x00, 0x00, 0x00, \
                                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, \
                                         0x00, 0x00, 0x00, 0x00, 0x00 }
 /*!
@@ -173,9 +173,9 @@ extern "C"
  It is represented as a bit string with LSB representing Ch0.
  e.g., 0x01 0x10 represents Ch0 and Ch12 are included.
  */
-#define CONFIG_FH_CHANNEL_MASK        { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, \
-                                        0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, \
-                                        0x00, 0x00, 0x00, 0x00, 0x00,}
+#define CONFIG_FH_CHANNEL_MASK        { 0x7F, 0x00, 0x00, 0x00, 0x00, 0x00, \
+                                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, \
+                                        0x00, 0x00, 0x00, 0x00, 0x00 }
 /* FH related config variables */
 /*!
  List of channels to target the Async frames
@@ -187,9 +187,9 @@ extern "C"
  it should be removed from Async Mask and added to exclude channels
  (CONFIG_CHANNEL_MASK).
  */
-#define FH_ASYNC_CHANNEL_MASK         { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, \
-                                        0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, \
-                                        0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
+#define FH_ASYNC_CHANNEL_MASK         { 0x7F, 0x00, 0x00, 0x00, 0x00, 0x00, \
+                                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, \
+                                        0x00, 0x00, 0x00, 0x00, 0x00 }
 
 /*! Rx on when idle, false for sleepy device, true for non sleepy device */
 #define CONFIG_RX_ON_IDLE          false
@@ -200,14 +200,14 @@ extern "C"
   must be less than 50. Stack will allocate memory proportional
  to the number of end devices requested.
  */
-#define FH_NUM_NON_SLEEPY_HOPPING_NEIGHBORS  2
+#define FH_NUM_NON_SLEEPY_HOPPING_NEIGHBORS  50
 /*!
  The number of non sleepy fixed channel end devices to be supported.
  It is to be noted that the total number of non sleepy devices supported
   must be less than 50. Stack will allocate memory proportional
  to the number of end devices requested.
  */
-#define FH_NUM_NON_SLEEPY_FIXED_CHANNEL_NEIGHBORS  2
+#define FH_NUM_NON_SLEEPY_FIXED_CHANNEL_NEIGHBORS  50
 
 /*!
  Dwell Time: The duration for which a non sleepy end device shall

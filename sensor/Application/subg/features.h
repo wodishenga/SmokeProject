@@ -82,10 +82,10 @@ extern "C"
 
 /*! If defined, builds the image with all the modes of operation
     (frequency hopping, beacon mode and non beacon mode) */
-#define FEATURE_ALL_MODES
+#undef FEATURE_ALL_MODES
 
 /*! If defined, builds the image with the frequency mode of operation */
-#undef FEATURE_FREQ_HOP_MODE
+#define FEATURE_FREQ_HOP_MODE
 
 /*! If defined, builds the image with beacon mode of operation */
 #undef FEATURE_BEACON_MODE
